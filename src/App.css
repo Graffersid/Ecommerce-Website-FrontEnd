@@ -1,0 +1,13 @@
+.navbar-wrapper{
+background-color: rgb(0, 0, 0);
+color:white;
+}
+.navbar-link,#basic-nav-dropdown {
+  color:white !important;
+}
+.navbar-inner{
+  justify-content: space-between;
+}
+.navbar-collapse{
+  flex-grow: unset !important;
+}
