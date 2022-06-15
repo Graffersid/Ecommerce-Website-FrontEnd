@@ -17,7 +17,7 @@ function Home() {
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto ">
           <Nav.Link href="#home" className="navbar-link">Home</Nav.Link>
-          <Nav.Link href="#link" className="navbar-link">Login</Nav.Link>
+          <Nav.Link href="/login" className="navbar-link">Login</Nav.Link>
           <Nav.Link href="#link" className="navbar-link">Sign Up</Nav.Link>
           <NavDropdown title="Dropdown" className="navbar-link" id="basic-nav-dropdown">
             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
