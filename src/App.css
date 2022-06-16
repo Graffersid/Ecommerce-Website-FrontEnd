@@ -11,3 +11,9 @@ color:white;
 .navbar-collapse{
   flex-grow: unset !important;
 }
+
+.card-class{
+width:200px;
+box-shadow: 2px 2px 2px 2px #000000;
+
+}
