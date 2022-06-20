@@ -20,7 +20,33 @@ import Sunglasscollectionimg4 from '../Images/Sunglass-collection-img4.webp'
 import NewBackimg6webp from '../Images/NewBack-img6.webp'
 import CoupensImagewebp from '../Images/CoupensImage-5.webp'
 import { flashproducts } from '../DataFiles/ProductsDetials';
+import sliderimage1 from '../Images/Slider-image-1.webp'
+import sliderimage2 from '../Images/slider-image-2.webp'
+import sliderimage3 from '../Images/slider-image-3.webp'
+// import OwlCarousel from 'react-owl-carousel2';
+// import 'react-owl-carousel2/style.css';
+import OwlCarousel from 'react-owl-carousel';  
+import 'owl.carousel/dist/assets/owl.carousel.css';  
+import 'owl.carousel/dist/assets/owl.theme.default.css';  
+import Footer from './Footer';
+import ImageWithText from '../Images/image-wtih-text-img1.webp'
+import AppstoreIMage from '../Images/App-store-image-1.png'
+import GooglestoreImage from '../Images/Google-Play-image-1.png'
+import Newsletter from './Newsletter';
+
+
 function Home() {
+  const options = {
+ 
+    responsive: { 
+      768: {
+            items: 1,
+            center:true
+        }
+    },
+};
+ 
+ 
   return (
     <div>
 
@@ -48,7 +74,7 @@ function Home() {
       <Nav.Link className="Navbar-link-two">
     <SearchIcon style={{width:"1.8rem", height:'1.8rem'}}/>
       </Nav.Link>
-      <Nav.Link className="Navbar-link-two" >
+      <Nav.Link className="Navbar-link-two" href="/login">
       Sign Up
       </Nav.Link>
       <Nav.Link className="Navbar-link-two">
@@ -144,7 +170,7 @@ function Home() {
 			<img src={item.productimg} alt=""/>
 		</div>
 		<div class="product-details">
-			<span class="product-catagory">Women,bag</span>
+			{/* <span class="product-catagory">Women,bag</span> */}
 			<h4><a href="">{item.producttitle}</a></h4>
 			<p>{item.productDescription}</p>
 			<div class="product-bottom-details">
@@ -162,6 +188,35 @@ function Home() {
 
 
 </div></Container>
+
+<div className='slider-wrapper loop'> 
+<OwlCarousel items={1.5}  
+          className="owl-theme"  
+          loop  
+          margin={30}  
+          dots={true}
+          center={true}
+          {...options}>
+ <img src={sliderimage1}/>
+ <img src={sliderimage2}/>
+ <img src={sliderimage3}/>
+ </OwlCarousel>
+</div>
+<div className="image-with-text-homepage"> 
+  <div className='image-with-text-one'> <h3> The ChawkBazar App</h3>
+     <h1> Share Your <span>Ideas</span> & Shop Endless <span>Inspiration</span></h1>
+     <div > 
+      <button className="image-with-text-btn"><img style={{width:'200px', height:'75px'}} src={AppstoreIMage}/></button> 
+      <button className="image-with-text-btn"><img style={{width:'200px', height:'60px'}} src={GooglestoreImage}/></button>
+     </div>
+    
+  </div>
+  <div style={{textAlign:'right'}} className="image-with-text-two"> 
+  <img src={ImageWithText}/>
+
+  </div>
+</div>
+
   {/* <div style={{backgroundColor:'black', height:"100vh"}}> 
 
   <Carousel fade>
@@ -214,6 +269,9 @@ function Home() {
  <BulkUpload/>
  <CloundinaryUpload/>
  </div> */}
+ <Newsletter/>
+<Footer/>
+
 
   </ThemeProvider>
 

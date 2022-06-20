@@ -1,0 +1,113 @@
+.validationerrormsg{
+    font-size: 13px;
+    color:red;
+}
+
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+}
+.login-wrapper-sub-div{
+    background-color: white;
+    box-shadow: 1px 1px 1px 1px grey;
+}
+.login-form-input-wrapper {
+    line-height: 20px;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+.login-form-wrapper-inner{
+    width:450px;
+    padding:2rem;
+}
+.login-form-wrapper-inner h1{
+    margin-bottom:2rem;
+    font-size:29px;
+    text-align: center;
+}
+.inputfieldclass{
+    font-size: .875rem;
+    line-height: 1.25rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    height: 3rem;
+    border:1px solid rgb(188, 188, 188)
+}
+.inputfield-label{
+        --tw-text-opacity: 1;
+        color: rgba(58,58,58,var(--tw-text-opacity));
+        line-height: 1;
+        font-weight: 600;
+        font-size: .875rem;
+        line-height: 1.25rem;
+        cursor: pointer;
+        margin-bottom: 10px;
+}
+.login-btn-wrapper{
+display:flex;
+flex-direction: column;
+justify-content: center;
+
+}
+.login-btn-wrapper button:nth-child(1){
+    box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow);
+    --tw-shadow: 0 3px 6px rgba(0,0,0,0.12);
+    --tw-text-opacity: 1;
+    color: rgba(255,255,255,var(--tw-text-opacity));
+    --tw-bg-opacity: 1;
+    background-color: black;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    padding-top: 0.875rem;
+    padding-bottom: 0.875rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    height: 3rem;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    transition-duration: .3s;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    font-weight: 600;
+}
+.login-btn{
+    --tw-bg-opacity: 1;
+    background-color: rgba(66,133,244,var(--tw-bg-opacity));
+    font-weight: 600;
+    cursor: pointer;
+    color:white;
+    border:none;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    padding-top: 0.875rem;
+    padding-bottom: 0.875rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    height: 3rem;
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    transition-duration: .3s;
+    border-radius: 0.375rem;
+}
+
+.showpassword-wrapper{
+display: flex;
+justify-content: space-between;
+}
+.showpassword-text{
+    font-size: 15px;
+    align-self: center;
+    color:black;
+    cursor: pointer;
+    margin-bottom: 23px;
+ }
