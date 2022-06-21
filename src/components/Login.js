@@ -1,12 +1,13 @@
 import { Form, Formik } from 'formik';
 import React, { useState } from 'react';
-import { GoogleLogin, GoogleLogout } from 'react-google-login';
+import { GoogleLogin,GoogleLogout } from 'react-google-login';
 import TextFields from '../subcomponents/TextFields';
 import * as Yup from 'yup'
 import '../CSS/Login.css'
 import GoogleIcon from '@mui/icons-material/Google';
-
-const clientId = "1034408768027-ph1mk6age6q01v8q6lnobqub5q6ar1gj.apps.googleusercontent.com";
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import {GoogleAPI,} from 'react-google-oauth'
+const clientId = "1034408768027-c6vt2kge1is560f51o7dv4qag24hna3n.apps.googleusercontent.com";
 
 function Login() {
    const [passtype, setpasstype] = useState(true)
@@ -78,9 +79,31 @@ function Login() {
 
             </Formik>
             </div>
-           
-           
-            { showloginButton ?
+            {/* <GoogleAPI clientId={clientId}
+            onLoginSuccess={resSuccess=>{
+                console.log(resSuccess)
+            }}
+            onLoginFailure={resFa =>{
+                console.log(resFa)
+            }}
+            cookiePolicy={'single_host_origin'}  >
+                <div><GoogleLogin  
+          
+            /></div>
+        </GoogleAPI> */}
+{/* 
+     <GoogleOAuthProvider clientId={clientId}>
+            <GoogleLogin
+             
+             onSuccess={credentialResponse => {
+                console.log(credentialResponse);
+            }}
+            onFailure={(err) => {
+                console.log('Login Failed',err);
+            }}
+            cookiePolicy={'single_host_origin'}  />;
+    </GoogleOAuthProvider>  */}
+            {showloginButton ?
                 <GoogleLogin
                     clientId={clientId}
                     buttonText="Sign In"

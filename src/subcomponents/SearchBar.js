@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from 'react'
+import { Button, Modal } from 'react-bootstrap';
 import SearchField from "react-search-field";
+import SearchIcon from '@mui/icons-material/Search';
+import CloseIcon from '@mui/icons-material/Close';
+import '../CSS/SearchBar.css'
 function SearchBar() {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  
     const [ture,setTrue] = useState(true)
     var Maindata = [
         {
@@ -59,18 +68,30 @@ function SearchBar() {
  } 
     return (
     <div>
-  <SearchField
-  placeholder="Search..."
-  onChange={handlesearchchange}
-  onSearchClick={(data)=>handlesearchsubmit(data)}
-  classNames="test-class"
-/>
+
+      <SearchIcon style={{width:"1.8rem", height:'1.8rem'}} onClick={handleShow}/>
+      <Modal show={show} onHide={handleClose} >
+
+       <div style={{textAlign:'right'}}>
+            <CloseIcon onClick={handleClose} style={{cursor:'pointer' ,margin:'15px'}} />
+            </div>
+
+        <Modal.Body > 
+        <SearchField
+          placeholder="Search..."
+          onChange={handlesearchchange}
+          onSearchClick={(data)=>handlesearchsubmit(data)}
+          classNames="test-class"
+          style={{width:'100%'}}
+        /></Modal.Body>
+     
+      </Modal>
 <div>
-{newdata?.map(item => {
+{/* {newdata?.map(item => {
     return(
     <h2> {item.value}</h2>
     )
-})}
+})} */}
 </div>
     </div>
   )

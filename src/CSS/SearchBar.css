@@ -1,0 +1,10 @@
+.test-class{
+    width:100%;
+    height:2rem;
+}
+/* .react-search-field-button{
+    border:none !important
+} */
+.modal-dialog {
+    max-width: 1000px;
+}

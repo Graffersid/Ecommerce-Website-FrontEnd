@@ -11,8 +11,8 @@ import Login from './Login';
 import BulkUpload from '../subcomponents/BulkUpload';
 import CloundinaryUpload from './CloundinaryUpload';
 import MainLogo from '../Images/Ecommerce-logo.jpg'
-import SearchIcon from '@mui/icons-material/Search';
-import LocalMallIcon from '@mui/icons-material/LocalMall';
+
+
 import MenCollectionIMage from '../Images/Mens Collection img -1.webp'
 import sportscollectionImage from '../Images/sports-collestion img-2.webp'
 import WomencollectionImage from '../Images/Women-collection-img3.webp'
@@ -33,17 +33,19 @@ import ImageWithText from '../Images/image-wtih-text-img1.webp'
 import AppstoreIMage from '../Images/App-store-image-1.png'
 import GooglestoreImage from '../Images/Google-Play-image-1.png'
 import Newsletter from './Newsletter';
+import AddtoCart from '../subcomponents/AddtoCart';
+import DropDown from '../subcomponents/DropDown';
 
 
 function Home() {
   const options = {
  
-    responsive: { 
-      768: {
-            items: 1,
-            center:true
-        }
-    },
+    // responsive: { 
+    //   768: {
+    //         items: 1,
+    //         center:true
+    //     }
+    // },
 };
  
  
@@ -62,25 +64,28 @@ function Home() {
           <Nav.Link href="#home" className="navbar-link">Home</Nav.Link>
           <Nav.Link href="/login" className="navbar-link">Login</Nav.Link>
           <Nav.Link href="#link" className="navbar-link">Sign Up</Nav.Link>
-          <NavDropdown title="Dropdown" className="navbar-link" id="basic-nav-dropdown">
+          <Nav.Link href="" className="navbar-link"> <DropDown/> </Nav.Link>
+         
+          {/* <NavDropdown title="Dropdown" className="navbar-link" id="basic-nav-dropdown">
             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-          </NavDropdown>
+          </NavDropdown> */}
         </Nav>
      <Nav>
       <Nav.Link className="Navbar-link-two">
-    <SearchIcon style={{width:"1.8rem", height:'1.8rem'}}/>
+    <SearchBar/>
       </Nav.Link>
       <Nav.Link className="Navbar-link-two" href="/login">
       Sign Up
       </Nav.Link>
       <Nav.Link className="Navbar-link-two">
-        <LocalMallIcon style={{width:"1.8rem", height:'1.8rem'}}/> 
+       
+        <AddtoCart/>
       </Nav.Link>
-    </Nav>
+     </Nav>
 
       </Navbar.Collapse>
 
