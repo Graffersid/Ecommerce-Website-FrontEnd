@@ -35,7 +35,9 @@ import GooglestoreImage from '../Images/Google-Play-image-1.png'
 import Newsletter from './Newsletter';
 import AddtoCart from '../subcomponents/AddtoCart';
 import DropDown from '../subcomponents/DropDown';
-
+import ProductPage from './ProductPage';
+import { render } from '@testing-library/react';
+import {useNavigate, Link} from 'react-router-dom'
 
 function Home() {
   const options = {
@@ -47,7 +49,11 @@ function Home() {
     //     }
     // },
 };
- 
+const navigate = useNavigate()
+ const handleProductpage=(item)=>{
+  navigate(`products/${item.productId}`)
+
+ }
  
   return (
     <div>
@@ -170,7 +176,8 @@ function Home() {
 <div className='product-wrapper'>
 {flashproducts.map(item=>{
   return(
-<div class="product-card">
+   <Link to={`/products/${item.productId}`} state={{name:item}}>
+ <div class="product-card" style={{cursor:'pointer'}} >
 		<div class="product-tumb">
 			<img src={item.productimg} alt=""/>
 		</div>
@@ -187,6 +194,7 @@ function Home() {
 			</div>
 		</div>
 	</div>
+  </Link>  
   )
 })} 
  </div>
