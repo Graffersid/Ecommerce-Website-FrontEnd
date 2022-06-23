@@ -34,6 +34,7 @@
     line-height: 1.25rem;
     padding-left: 1.25rem;
     padding-right: 1.25rem;
+    border-radius: 10px;
     height: 3rem;
     border:1px solid rgb(188, 188, 188)
 }
@@ -41,8 +42,8 @@
         --tw-text-opacity: 1;
         color: rgba(58,58,58,var(--tw-text-opacity));
         line-height: 1;
-        font-weight: 600;
-        font-size: .875rem;
+        font-weight: 500;
+        font-size: .775rem;
         line-height: 1.25rem;
         cursor: pointer;
         margin-bottom: 10px;
@@ -119,4 +120,8 @@ justify-content: space-between;
 }
  .Register-wrapper{
     width:1000px !important; 
+ }
+ .react-google-oauth-button-login {
+    width:100% !important;
+    border-radius: 0.25rem !important;
  }

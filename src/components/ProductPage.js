@@ -4,7 +4,7 @@ import AddtoCart from '../subcomponents/AddtoCart'
 import DropDown from '../subcomponents/DropDown'
 import SearchBar from '../subcomponents/SearchBar'
 import MainLogo from '../Images/Ecommerce-logo.jpg'
-import {useParams ,useLocation} from 'react-router-dom'
+import {useParams ,useLocation,Link} from 'react-router-dom'
 import OwlCarousel from 'react-owl-carousel';
 import '../CSS/ProductPage.css'
 import { Rating, Typography } from '@mui/material'
@@ -14,6 +14,8 @@ import * as Yup from 'yup'
 import '../CSS/Login.css'
 import Footer from './Footer'
 import Newsletter from './Newsletter'
+import { flashproducts } from '../DataFiles/ProductsDetials'
+import { relatedproducts } from '../DataFiles/RelatedProducts'
 function ProductPage() {
  
      const [QuantityVal, setQuantityVal] =useState(1)
@@ -67,7 +69,7 @@ function ProductPage() {
     <>
     <Navbar expand="lg" className='navbar-wrapper' style={{position: "sticky"}}  fixed={'top'} >   
 
-            <Navbar.Brand href="#home" className="navbar-link"> <img style={{width:'95px', height:"30px"}} src={MainLogo}/></Navbar.Brand>
+            <Navbar.Brand href="/" className="navbar-link"> <img style={{width:'95px', height:"30px"}} src={MainLogo}/></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto ">
@@ -100,7 +102,7 @@ function ProductPage() {
         </Navbar.Collapse>
 </Navbar>
        <div className='product-page-Wholewrapper'>
-         <Container style={{display:'flex' , flexWrap:'wrap'}}>
+         <div style={{display:'flex' , flexWrap:'wrap' , maxWidth:"95%", margin:"auto"}}>
         <div style={{width:'50%' , padding:'30px'}}> 
         <div className='Main-image-wrapper'> 
         <img id="main-image" className="big-image" src={itemval.state.name.productimg} alt="ProductMainImage"/>
@@ -117,7 +119,7 @@ function ProductPage() {
       <div style={{width:'50%' , padding:'30px'}} className="productpage-content">
          <h2> {itemval.state.name.producttitle}</h2>
         <p > {itemval.state.name.productDescription}</p>  
-        <div style={{display:"flex",marginTop: '1.25rem'}}>
+        <div style={{display:"flex",marginTop: '1.25rem' , alignItems:'center'}}>
             <div className='product-page-price'>{itemval.state.name.productPrice}</div>
             <span className='product-page-compareprice'> {itemval.state.name.comparePrice}</span>
         </div>  
@@ -135,7 +137,7 @@ function ProductPage() {
         <button style={{backgroundColor:"rgb(130, 36, 227)"}}> </button>
         <button style={{backgroundColor:"rgb(221, 51, 51)"}}> </button>
        </div>
-       <div style={{display:'flex', alignItems:'center', marginTop:'2rem', justifyContent:'space-between' }}>
+       <div style={{display:'flex', alignItems:'center', marginTop:'3rem', justifyContent:'space-between' }}>
         <div className='Quantity-selector-wrappper'>
             <div className="quantity-input">
                 <button className="quantity-input__modifier quantity-input__modifier--left" onClick={decrement}>
@@ -214,8 +216,40 @@ function ProductPage() {
     </div>
        </div>
 
-         </Container>
-         <Newsletter/>
+     
+<div className='Second-section-homepage' style={{border:'none'}}> 
+ <h3 className='second-section-h3' style={{marginBottom:"3rem"}}> Related Products</h3>
+<div className='product-wrapper'>
+{relatedproducts.map(item=>{
+  return(
+   <Link to={`/products/${item.productId}`} state={{name:item}} style={{color:'black', textDecoration:"none"}}>
+ <div class="product-card" style={{cursor:'pointer'}} >
+		<div class="product-tumb">
+			<img src={item.productimg} alt=""/>
+		</div>
+		<div class="product-details">
+			{/* <span class="product-catagory">Women,bag</span> */}
+			<h4><a href="">{item.producttitle}</a></h4>
+			<p>{item.productDescription}</p>
+			<div class="product-bottom-details">
+				<div class="product-price">{item.productPrice}<small style={{marginLeft:'2px'}}>{item.comparePrice}</small></div>
+				<div class="product-links">
+					<a href=""><i class="fa fa-heart"></i></a>
+					<a href=""><i class="fa fa-shopping-cart"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+  </Link>  
+  )
+})} 
+ </div>
+
+
+</div>
+
+         </div>
+         <Newsletter background={true}/>
   <Footer/>
 
       </div>

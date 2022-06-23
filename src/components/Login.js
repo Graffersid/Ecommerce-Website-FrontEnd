@@ -1,12 +1,13 @@
 import { Form, Formik } from 'formik';
 import React, { useState } from 'react';
-import { GoogleLogin,GoogleLogout } from 'react-google-login';
+import { GoogleLogout } from 'react-google-login';
 import TextFields from '../subcomponents/TextFields';
 import * as Yup from 'yup'
 import '../CSS/Login.css'
 import GoogleIcon from '@mui/icons-material/Google';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import {GoogleAPI,} from 'react-google-oauth'
+import {GoogleAPI,GoogleLogin} from 'react-google-oauth'
+import {useNavigate} from 'react-router-dom'
 
 
 const clientId = "1034408768027-c6vt2kge1is560f51o7dv4qag24hna3n.apps.googleusercontent.com";
@@ -42,6 +43,8 @@ function Login() {
     setpasstype(!passtype)   
     console.log(e)
   }
+
+  const navigate= useNavigate()
     return (
         <div className='login-wrapper '>
              <div className='login-wrapper-sub-div'> 
@@ -52,6 +55,7 @@ function Login() {
             validationSchema={validate}
             onSubmit={values=>{
                 console.log(values)
+                navigate('/DashboardVendor')
             }}>
               {formik => (
                     <div className='login-form-wrapper-inner'> 
@@ -69,7 +73,39 @@ function Login() {
                           <div className='login-btn-wrapper'> 
                         <button type="submit"> Login</button>
                          <p style={{textAlign:'center'}}> or</p>
-                        <button type="submit" className='login-btn'> <span style={{marginRight:'10px'}}><GoogleIcon/> </span>Login with Google</button>
+                        {/* <button type="submit" className='login-btn'> <span style={{marginRight:'10px'}}><GoogleIcon/> </span>Login with Google</button> */}
+                                   
+                                <GoogleAPI clientId={clientId}
+                                        onLoginSuccess={resSuccess=>{
+                                            console.log(resSuccess)
+                                        }}
+                                        onLoginFailure={resFa =>{
+                                            console.log(resFa)
+                                        }}
+                                        cookiePolicy={'single_host_origin'} className='login-btn'>
+                                            <div><GoogleLogin  
+                                    
+                                        /></div>
+                                    </GoogleAPI>  
+                                    {/* {showloginButton ?
+                            <GoogleLogin
+                                clientId={clientId}
+                                buttonText="Login with Google"
+                                onSuccess={onLoginSuccess}
+                                onFailure={onLoginFailure}
+                                cookiePolicy={'single_host_origin'}
+                                isSignedIn={true}
+                                className='login-btn'
+                            /> : null}
+
+                        { showlogoutButton ?
+                            <GoogleLogout
+                                clientId={clientId}
+                                buttonText="Sign Out"
+                                onLogoutSuccess={onSignoutSuccess}
+                            >
+                            </GoogleLogout> : null
+                        } */}
                         </div>
                          </Form>
                      <p style={{color:'rgba(90,90,90)', textAlign:"center" , marginTop:"22px"}}> Don't have any account? <a href="/register" style={{fontWeight:'700', color:'black'}}> Register </a></p>
@@ -81,18 +117,7 @@ function Login() {
 
             </Formik>
             </div>
-            {/* <GoogleAPI clientId={clientId}
-            onLoginSuccess={resSuccess=>{
-                console.log(resSuccess)
-            }}
-            onLoginFailure={resFa =>{
-                console.log(resFa)
-            }}
-            cookiePolicy={'single_host_origin'}  >
-                <div><GoogleLogin  
-          
-            /></div>
-        </GoogleAPI> */}
+        
 {/* 
      <GoogleOAuthProvider clientId={clientId}>
             <GoogleLogin
@@ -105,24 +130,7 @@ function Login() {
             }}
             cookiePolicy={'single_host_origin'}  />;
     </GoogleOAuthProvider>  */}
-            {showloginButton ?
-                <GoogleLogin
-                    clientId={clientId}
-                    buttonText="Sign In"
-                    onSuccess={onLoginSuccess}
-                    onFailure={onLoginFailure}
-                    cookiePolicy={'single_host_origin'}
-                    isSignedIn={true}
-                /> : null}
-
-            { showlogoutButton ?
-                <GoogleLogout
-                    clientId={clientId}
-                    buttonText="Sign Out"
-                    onLogoutSuccess={onSignoutSuccess}
-                >
-                </GoogleLogout> : null
-            }
+           
         </div>
     );
 }

@@ -54,7 +54,9 @@ const navigate = useNavigate()
   navigate(`products/${item.productId}`)
 
  }
- 
+ const handlelogoimage=()=>{
+  navigate('/')
+ }
   return (
     <div>
 
@@ -63,11 +65,11 @@ const navigate = useNavigate()
     >
         <Navbar expand="lg" className='navbar-wrapper' style={{position: "sticky"}}  fixed={'top'} >   
 
-      <Navbar.Brand href="#home" className="navbar-link"> <img style={{width:'95px', height:"30px"}} src={MainLogo}/></Navbar.Brand>
+      <Navbar.Brand className="navbar-link" onClick={handlelogoimage}> <img style={{width:'95px', height:"30px"}} src={MainLogo} /></Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto ">
-          <Nav.Link href="#home" className="navbar-link">Home</Nav.Link>
+          <Nav.Link href="/" className="navbar-link">Home</Nav.Link>
           <Nav.Link href="/login" className="navbar-link">Login</Nav.Link>
           <Nav.Link href="#link" className="navbar-link">Sign Up</Nav.Link>
           <Nav.Link href="" className="navbar-link"> <DropDown/> </Nav.Link>
@@ -176,7 +178,7 @@ const navigate = useNavigate()
 <div className='product-wrapper'>
 {flashproducts.map(item=>{
   return(
-   <Link to={`/products/${item.productId}`} state={{name:item}}>
+   <Link to={`/products/${item.productId}`} state={{name:item}} style={{color:'black', textDecoration:"none"}}>
  <div class="product-card" style={{cursor:'pointer'}} >
 		<div class="product-tumb">
 			<img src={item.productimg} alt=""/>
