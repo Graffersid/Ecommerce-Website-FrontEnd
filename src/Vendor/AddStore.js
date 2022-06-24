@@ -19,9 +19,11 @@ import { Country, State, City }  from 'country-state-city';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
+import Newsletter from '../components/Newsletter';
+import Footer from '../components/Footer';
 
 
-function Order() {
+function AddStore() {
     const [passtype, setpasstype] = useState(true)
     const [imageval, setimageval] =useState(false)
     const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
@@ -36,11 +38,20 @@ function Order() {
          .required('Phone Number is Required')
          .matches(phoneRegExp, 'Phone number is not valid')
          .min(10,'Must be 10-digit'),
+   
         email:Yup.string()
          .required('Email is required')
          .email('Email is Invalid'),
          storeaddress:Yup.string()
           .required('Store Address is Required'),
+          address1:Yup.string()
+          .required('Address 1 is Required'),
+          address2:Yup.string()
+          .required('Address 2 is Required'),
+          landmark:Yup.string()
+          .required('Landmark is Required'),
+          zipcode:Yup.string()
+          .required('Zip Code is Required'),
       
       })
       const showpassword=(e)=>{
@@ -149,9 +160,11 @@ function Order() {
             <Formik  initialValues={{
               name:"",
               email:"",
-              storeaddress:'',
               phone:'',
-  
+              address1:'',
+              address2:'',
+              landmark:'',
+              zipcode:""
             }}
             validationSchema={validate}
             onSubmit={(values)=>{
@@ -185,7 +198,7 @@ function Order() {
                                 }} 
                 
                             />
-                           {imageval ? <p className="validationerrormsg" style={{textAlign:'center',color:'red', fontSize:'13px'}}> Image is required</p>:null }
+                           {imageval ? <p className="validationerrormsg" style={{textAlign:'center',color:'red', fontSize:'13px' }}> Image is required</p>:null }
                             {/* <input type="file" onChange={(e)=>handleimagechange(e)}/>
                             {console.log(ImageSrc.file ,ImageSrc.imagePreviewUrl)} */}
                             {/* {console.log('imagehhh',imagehhh)} */}
@@ -193,17 +206,38 @@ function Order() {
                             {console.log('imagetwo',imagetwo)}
                             <p> Upload your logo image</p>
                          </div>
-                         <div style={{display:'flex', justifyContent:"space-between", width: '100%'}}> 
-                          <div style={{width:"46%"}}>  
-                            <TextFields label="Name" name="name" type="text" />
+                         <div style={{display:'block', width: '100%'}}> 
+                           <div style={{width:'100%',paddingRight:'1rem'}}> 
+                           <TextFields label="Name" name="name" type="text" />
+                           </div>
+                          <div style={{width:"100%", display:'flex', justifyContent:'space-between'}}>  
+                             <div style={{width:'80%',marginRight:'1rem'}}>
                             <TextFields label="Store Email" name="email" type="email" />
+                            </div>
+                            <div style={{width:'80%',marginRight:'1rem'}}>
                             <TextFields label="Mobile Number" name="phone" type="text" />
+                            </div>
                          </div>
-                         <div style={{width:"46%"}}> 
-                            <TextFields label="Store Address" name="storeaddress" type="text"/>
-                           
-                            <div className='login-form-input-wrapper'>
-                            {/* <label className="inputfield-label">Select a State <sup style={{color:'red',fontSize:"19px",top:'0px'}}>* </sup></label> */}
+                       
+                         <div style={{width:'100%',paddingRight:'1rem'}}>
+                              <TextFields label="Address Line 1" name="address1" type="text" />
+                          </div>
+                         
+                          <div style={{width:'100%',paddingRight:'1rem'}}>
+                             <TextFields label="Address Line 2" name="address2" type="text" />
+                            </div>  
+                       
+                         <div  style={{width:"100%", display:'flex', justifyContent:'space-between'}}> 
+                              <div style={{width:'80%',marginRight:'1rem'}}>
+                                 <TextFields label="Landmark" name="landmark" type="text" />
+                              </div>
+                              <div style={{width:'80%',marginRight:'1rem'}}>
+                                 <TextFields label="ZIP Code" name="zipcode" type="text" />
+                              </div>
+                         </div>
+                         <div style={{width:"100%" , display:'flex'}}> 
+                            <div style={{width:'80%',marginRight:'1rem'}} className='login-form-input-wrapper'>
+                            <label className="inputfield-label">Select a State <sup style={{color:'red',fontSize:"19px",top:'0px'}}>* </sup></label>
                             <Autocomplete
                                   id="country-select-demo"
                                   sx={{ width: '100%' }}
@@ -221,7 +255,7 @@ function Order() {
                                   }}
                                   renderOption={(props, option) => (
                                     
-                                    <Box component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props} >
+                                    <Box component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}  >
                                       <img
                                         loading="lazy"
                                         width="20"
@@ -237,7 +271,7 @@ function Order() {
                                     <TextField
                                    
                                       {...params}
-                                      label="Choose a State"
+                                      label="Chooses a State"
                                       inputProps={{
                                         ...params.inputProps,
                                         autoComplete: 'new-password', // disable autocomplete and autofill
@@ -250,8 +284,8 @@ function Order() {
                                 
                               {stateValidation ? <p className="validationerrormsg" style={{color:'red', fontSize:'13px'}}> Required</p> :null}
                                 </div>
-                                <div className='login-form-input-wrapper'>
-                                 
+                                <div style={{width:'80%',marginRight:'1rem'}} className='login-form-input-wrapper'>
+                                <label className="inputfield-label">Select a City <sup style={{color:'red',fontSize:"19px",top:'0px'}}>* </sup></label>
                                  <Autocomplete
                                   id="country-select-demo"
                                   sx={{ width: '100%' }}
@@ -295,7 +329,10 @@ function Order() {
                                     )} />
                                   {CityValidation ? <p className="validationerrormsg" style={{color:'red', fontSize:'13px'}}> Required</p> :null}
                                 </div>
-                        <div className='login-form-input-wrapper'>
+                   
+                   
+                          </div>
+                          <div className='login-form-input-wrapper'>
                           <label className="inputfield-label">Upload Store License <sup style={{color:'red',fontSize:"19px",top:'0px'}}>* </sup></label>
                           <label htmlFor="contained-button-file">
                                 <Input accept="pdf/*" id="contained-button-file" multiple type="file" />
@@ -304,8 +341,6 @@ function Order() {
                                 </Button>
                             </label>
                             </div>
-                   
-                          </div>
                          </div>   
                         
                          
@@ -313,26 +348,25 @@ function Order() {
                       {/* {console.log(Country.getAllCountries())} */}
                      {/* {console.log(State.getStatesOfCountry("IN"))} */}
                         </div> 
-                        <div style={{textAlign:"right"}}>
-                         <button style={{background:"black", border:'none', color:'white', fontWeight:'300', padding:'10px 15px' , borderRadius:"6px"}} type="submit" onClick={handleSave}> Save</button>
+                        <div style={{textAlign:"right",paddingRight: "1rem"}}>
+                         <button style={{background:"transparent", fontWeight:"700",border:'none', color:'black' , borderRadius:"6px"}} type="submit" onClick={handleSave}> Save</button>
                          </div>
              
                          </Form>
                         
 
                     </div>
-                )
-              }
-
-
+                )}
             </Formik>
 
       </div>
 
-        
+ 
         </Container>
+        <Newsletter background={true}/>
+        <Footer/>
     </div>
   )
 }
 
-export default Order
+export default AddStore

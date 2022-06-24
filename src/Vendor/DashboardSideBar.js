@@ -27,7 +27,7 @@ const DashboardSidebar = (props) => {
             <NavLink exact to="/DashboardVendor" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="columns" style={{color:'black'}} className={props.dashboard? `active-link-sidebar`:null}>Dashboard</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/DashboardOrder" activeClassName="activeClicked">
+            <NavLink exact to="/VendorOrders" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="table"  style={{color:'black'}} className={props.order? `active-link-sidebar`:null}>Order</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/DashboardAddStore" activeClassName="activeClicked">

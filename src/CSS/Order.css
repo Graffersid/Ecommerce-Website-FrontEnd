@@ -1,0 +1,32 @@
+.order-table-wrapper{
+    margin-top:2rem;
+}
+
+.order-table-wrapper table thead{
+    border-radius: 30px !important;
+}
+
+.order-table-wrapper table thead tr th{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    color: #464646;
+}
+.order-table-wrapper table tbody tr td{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    color: #464646;
+}
+table{
+    border-radius: 1em;
+}
+.action-btn-table {
+    background-color: black;
+    color: white !important;
+    border: none;
+    border-radius: 7px;
+    padding: 6px 39px;
+}

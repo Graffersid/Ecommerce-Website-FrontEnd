@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, Nav, Navbar } from 'react-bootstrap'
 import DashboardSidebar from './DashboardSideBar'
 import DashboardImage from '../Images/DashboardImage.jpg'
@@ -8,19 +8,37 @@ import AddtoCart from '../subcomponents/AddtoCart'
 import MainLogo from '../Images/Ecommerce-logo.jpg'
 import '../CSS/Dashboard.css'
 import { Autocomplete, Box, TextField } from '@mui/material'
-import { OrderData } from '../DataFiles/OrderData'
 import '../CSS/Order.css'
 import Newsletter from '../components/Newsletter'
 import Footer from '../components/Footer'
-import { Link } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
-function Order() {
+function OrderDetails() {
+    const OrderData = useLocation()    
+    const [OrderType, setOrderType] =useState('')
+    const[stateValidation, setStateValidation] =useState(false)
+    const order= [{name:'Recieved'},{name:'Failed'}, {name:'InProgreess'}]
+    var Ordersubtotal =0 
+    var Ordertotal = 0
+    const [pricearr,setpricearr] =useState([])
+    useEffect(()=>{
 
-  const [OrderType, setOrderType] =useState('')
-  const[stateValidation, setStateValidation] =useState(false)
-  const order= [{name:'Recieved'},{name:'Failed'}, {name:'InProgreess'}]
-  
-  return (
+    },[])
+
+ const totalprice=()=>{
+     OrderData.state.name.orderDetails.products.map(data=>{
+        pricearr.push(data.price)
+      })
+      var sum = pricearr.reduce((a, b)=>{
+        return a + b;
+       }); 
+    
+    // setOrdersubtotal(sum)
+    // setOrdertotal(sum+17) 
+    // console.log(sum)
+    // console.log(pricearr)
+ }
+    return (
     <div className="Dashboard-wrapper"> 
          <Navbar expand="lg" className='navbar-wrapper' style={{position: "sticky"}}  fixed={'top'} >   
 
@@ -76,67 +94,62 @@ function Order() {
         <DashboardSidebar order={true} style={{width:'25%'}}/>
             <div className="Dashboard-content-wrapper" style={{width:'75%'}}> 
 
-            <h2> Order</h2>
-                        <div style={{width:"44%" , marginTop:'2rem'}}> 
-                              <Autocomplete
-                                  id="country-select-demo"
-                                  sx={{ width: '100%' }}
-                                  options={order}
-                                  autoHighlight
-                                  getOptionLabel={(option) => option.name}
-                                  onChange={(option,value)=>{
-                                    setOrderType(value)
-                                    if(value===null){
-                                      setStateValidation(true)
-                                    }
-                                    else{
-                                      setStateValidation(false)
-                                    }
-                                  }}
-                                  renderOption={(props, option) => (
-                                    
-                                    <Box component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
-                                      {option?.name}
-                                    </Box>
-                                  )}
-                                  renderInput={(params) => (
-                                    <TextField
-                                   
-                                      {...params}
-                                      label="Recieved"
-                                      inputProps={{
-                                        ...params.inputProps,
-                                        autoComplete: 'new-password', // disable autocomplete and autofill
-                                      }} /> )}
+            <h2> Order Details : #{OrderData.state.name.orderId}</h2>
+                    {console.log(OrderData)}
 
-                                />
-
-                           </div>
+               <p> Address :{OrderData.state.name.orderDetails.address}</p>     
                <div className='order-table-wrapper' style={{width:'100%'}}> 
                    <table style={{width:'100%'}}> 
                      <thead  style={{background:"#E0E0E0",borderRadius:'10px', textAlign:'center'}}>
                       <tr>
-                      <th style={{padding:'13px'}}> Order </th>
-                      <th style={{padding:'13px'}}> Date </th>
-                      <th style={{padding:'13px'}}> Status </th>
+                      <th style={{padding:'13px'}}> Product </th>
                       <th style={{padding:'13px'}}> Total </th>
-                      <th style={{padding:'13px'}}> Actions </th>
                       </tr>
                      </thead>
                     <tbody>
-                   {OrderData.map((data)=>{
-                   return (
+                   {OrderData.state.name.orderDetails.products.map((data)=>{
+                          pricearr.push(data.price)
+                
+                          var sum = pricearr.reduce((a, b)=>{
+                              return a + b;
+                          }); 
+                          
+                          Ordersubtotal= sum
+                          Ordertotal = Ordersubtotal +17
+                          console.log(sum)
+                          console.log(pricearr)
+                  return (
+                    
                     <tr style={{padding:'15px', textAlign:'center'}}> 
-                      <td style={{padding:'15px'}}>#{data.orderId}</td>
-                      <td style={{padding:'15px'}}>{data.date}</td>
-                      <td style={{padding:'15px'}}>{data.status}</td>
-                      <td style={{padding:'15px'}}>{data.total}</td>
-                      <td  style={{padding:'15px'}}> <Link to={`/VendorOrders/${data.orderId}`} state={{name:data}}  className="action-btn-table" style={{textDecoration:"none"}}>{data.actions}</Link></td>
+                       <td style={{padding:'15px'}}>{data.name}</td>
+                       <td style={{padding:'15px'}}>${data.price}.00</td>
                      </tr>
                    )
-
-                   })}  
-                     
+                 })}  
+                     <tr style={{padding:'15px', textAlign:'center'}}> 
+                      <td style={{padding:'15px'}}>SubTotal:</td>
+                      <td style={{padding:'15px'}}>${Ordersubtotal}.00</td>
+                  
+                         
+                   
+                     </tr>
+                     <tr style={{padding:'15px', textAlign:'center'}}> 
+                      <td style={{padding:'15px'}}>Shipping:</td>
+                      <td style={{padding:'15px'}}>{OrderData.state.name.orderDetails.shipping}
+                      </td>
+                     </tr>
+                     <tr style={{padding:'15px', textAlign:'center'}}> 
+                      <td style={{padding:'15px'}}>Payment Method:</td>
+                      <td style={{padding:'15px'}}>{OrderData.state.name.orderDetails.paymentMethod}</td>
+                     </tr>
+                     <tr style={{padding:'15px', textAlign:'center'}}> 
+                      <td style={{padding:'15px'}}>Total:</td>
+                      <td style={{padding:'15px'}}>${Ordertotal}.00</td>
+                     </tr> 
+                     <tr style={{padding:'15px', textAlign:'center'}}> 
+                      <td style={{padding:'15px'}}>Note:</td>
+                      <td style={{padding:'15px'}}>{OrderData.state.name.orderDetails.note}</td>
+                     </tr>  
                     </tbody>
                    </table>
 
@@ -154,4 +167,4 @@ function Order() {
   )
 }
 
-export default Order
+export default OrderDetails

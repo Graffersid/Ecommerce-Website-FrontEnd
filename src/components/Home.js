@@ -285,7 +285,7 @@ const navigate = useNavigate()
  <CloundinaryUpload/>
  </div> */}
  <Newsletter/>
-<Footer/>
+  <Footer/>
 
 
   </ThemeProvider>

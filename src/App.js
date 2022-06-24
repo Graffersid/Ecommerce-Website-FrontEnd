@@ -9,6 +9,7 @@ import Products from './components/Products';
 import Dashboard from './Vendor/Dashboard';
 import Order from './Vendor/Order';
 import AddStore from './Vendor/AddStore'
+import OrderDetails from './Vendor/OrderDetails';
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
           <Route path="/products" element={<Products/>}> </Route>
           <Route path="products/:productId" element={<ProductPage/>}/>  
           <Route path="/DashboardVendor" element={<Dashboard/>} /> 
-          <Route path="/DashboardOrder" element={<Order/>} /> 
+          <Route path="/VendorOrders" element={<Order/>} ></Route> 
+          <Route path="VendorOrders/:orderId" element={<OrderDetails/>}/> 
           <Route path="/DashboardAddStore" element={<AddStore/>} /> 
     </Routes>
 
