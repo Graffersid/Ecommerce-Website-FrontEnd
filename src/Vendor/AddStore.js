@@ -21,7 +21,7 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Newsletter from '../components/Newsletter';
 import Footer from '../components/Footer';
-
+import { useNavigate } from 'react-router-dom';
 
 function AddStore() {
     const [passtype, setpasstype] = useState(true)
@@ -102,6 +102,11 @@ function AddStore() {
         {selectedCity===''? setCityValidation(true) :null}
         </>
        }
+      const navigate=useNavigate()
+   const handleAddProduct =()=>{
+    navigate('/VendorAddProduct')
+   }
+ 
     return (
     <div className="Dashboard-wrapper"> 
          <Navbar expand="lg" className='navbar-wrapper' style={{position: "sticky"}}  fixed={'top'} >   
@@ -182,8 +187,13 @@ function AddStore() {
               handleImageupload(imagetwo)
               console.log(values) 
             }}>
+
               {formik => (
                     <div className='login-form-wrapper-inner Register-wrapper' style={{width:"100%" , paddingLeft:'0rem'}}> 
+                        <div style={{textAlign:'right'}}> 
+                        <button onClick={handleAddProduct}> Add Product</button>
+                         
+                         </div>
                          <Form> 
                          <div className='register-form-wrapper' style={{display:'block'}}>    
                           <div className="image-picker-store" style={{display:'flex', alignItems:"center",justifyContent:"space-around", width:'50%', marginBottom:'3rem'}} >   

@@ -1,5 +1,5 @@
 .order-table-wrapper{
-    margin-top:2rem;
+    margin-top:1rem;
 }
 
 .order-table-wrapper table thead{
@@ -12,6 +12,7 @@
     font-size: 16px;
     line-height: 22px;
     color: #464646;
+    text-align: left !important;
 }
 .order-table-wrapper table tbody tr td{
     font-style: normal;
@@ -19,6 +20,7 @@
     font-size: 15px;
     line-height: 22px;
     color: #464646;
+    text-align: left !important;
 }
 table{
     border-radius: 1em;

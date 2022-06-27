@@ -18,7 +18,7 @@ function Order() {
 
   const [OrderType, setOrderType] =useState('')
   const[stateValidation, setStateValidation] =useState(false)
-  const order= [{name:'Recieved'},{name:'Failed'}, {name:'InProgreess'}]
+  const order= [{name:'Recieved'},{name:'Packed'}, {name:'Dispatch'}, {name:"Out for Delivery"},{name:"Delivered"}]
   
   return (
     <div className="Dashboard-wrapper"> 
