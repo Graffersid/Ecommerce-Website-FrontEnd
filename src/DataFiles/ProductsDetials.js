@@ -16,7 +16,8 @@ export const flashproducts=[
      producttitle:'Adidas Shoes Black',
      productDescription:"Men Black top sleeveless gown",
      productPrice:'$45.00',
-     comparePrice:'$99.99'
+     comparePrice:'$99.99',
+     Quantity:1000
     },
     {
         productimg:ProductImage2,
@@ -24,7 +25,9 @@ export const flashproducts=[
         producttitle:'Armani Wide-Leg Trousers',
         productDescription:"Monochrome elegance. Made with a relaxed wide-leg, these trousers are made from a sustainable soft organic cotton with a mechanical stretch making the garment easily recycled.",
         productPrice:'$12.00',
-        comparePrice:'$16.00'
+        comparePrice:'$16.00',
+        Quantity:12,
+        Quantity:200
        },
        {
         productimg:ProductImage3,
@@ -33,14 +36,16 @@ export const flashproducts=[
         productDescription:"Footwear refers to garments worn on the feet, which originally serves to purpose of protection against adversities of the environment, usually regarding ground textures and temperature.",
         productPrice:'$50.00',
         comparePrice:''
-       },
+     ,
+    Quantity:12  },
        {
         productimg:ProductImage4,
         productId: 4,       
         producttitle:'Wayfarer Sunglasses',
         productDescription:"Men Black top sleeveless gown",
         productPrice:'$15.00',
-        comparePrice:'$18.00'
+        comparePrice:'$18.00',
+        Quantity:12
        },
        {
         productimg:ProductImage5,
@@ -48,8 +53,8 @@ export const flashproducts=[
         producttitle:'Tissot Classic',
         productDescription:"The new-model Submariner now features Rolex’s powerhouse calibre 3235 Perpetual movement. An upgrade from the calibre 3135 movement,",
         productPrice:'$600.00',
-        comparePrice:''
-       },
+        comparePrice:'',
+         Quantity:129  },
        {
         productimg:ProductImage6,
         productId: 6,       
@@ -57,14 +62,16 @@ export const flashproducts=[
         productDescription:"Off-White self-striped knitted midi A-line dress, has a scoop neck, sleeveless, straight hem",
         productPrice:'$15.00',
         comparePrice:''
-       },
+     ,
+    Quantity:90  },
        {
         productimg:ProductImage7,
         productId: 7,       
         producttitle:'Polarised Wayfarer Sunglasses',
         productDescription:"This item is only exchangeable for the same or a different size, if available, and cannot be returned",
         productPrice:'$20.00',
-        comparePrice:'$35.00'
+        comparePrice:'$35.00',
+        Quantity:9
        },
        {
         productimg:ProductImage8,
@@ -72,7 +79,8 @@ export const flashproducts=[
         producttitle:'Gucci Carlton UK',
         productDescription:"Knitted midi A-line dress, has a scoop neck, sleeveless, straight hem",
         productPrice:'$14.99',
-        comparePrice:'$19.99'
+        comparePrice:'$19.99',
+        Quantity:0
        },
        {
         productimg:ProductImage9,
@@ -80,7 +88,8 @@ export const flashproducts=[
         producttitle:'NIKE Shoes',
         productDescription:"NIKE 2020 Black White is a clean and monochromatic colourway of the label’s latest high-technology silhouette. The model first launched late last year and is currently Jordan Brand’s flagship performance pair.",
         productPrice:'$50.00',
-        comparePrice:'$80.00'
+        comparePrice:'$80.00',
+        Quantity:123
        },
        {
         productimg:ProductImage10,
@@ -88,7 +97,8 @@ export const flashproducts=[
         producttitle:'Wayfarer Sunglasses',
         productDescription:"Our optical engineers developed these sunglasses for hiking. Ideal for occasional use in the mountains.",
         productPrice:'$20.00',
-        comparePrice:'$25.00'
+        comparePrice:'$25.00',
+        Quantity:12
        },
 
 ]

@@ -1,8 +1,8 @@
-.validationerrormsg{
+.validationerrormsg {
     font-size: 13px;
-    color:red;
+    color: red;
+    margin-top: 10px;
 }
-
 .login-wrapper {
     display: flex;
     justify-content: center;

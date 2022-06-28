@@ -54,3 +54,65 @@ font-size: 1rem;
     font-weight: 700;
     text-align: center;
 }
+.dashboard-storebox-wrapper{
+    background: #FFFFFF;
+    border: 0.5px solid #E6E6E6;
+    box-shadow: 0px 37px 15px rgba(0, 0, 0, 0.01), 0px 21px 12px rgba(0, 0, 0, 0.05), 0px 9px 9px rgba(0, 0, 0, 0.09), 0px 2px 5px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 260px;
+    height: 75px;
+    margin:20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.dashboard-storebox-wrapper h3{
+font-weight: 700;
+font-size: 24px;
+line-height: 33px;
+color: #000000;
+margin-bottom: 0px;
+}
+.dashboard-storebox-wrapper p{
+font-weight: 400;
+font-size: 14px;
+line-height: 19px;
+color: #959595;
+margin-bottom:0px;
+}
+.dashboard-lowerpart-wrapper {
+
+}
+.addproduct-btn{
+    background: #000000;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+    color: #FFFFFF;
+    padding:7px 13px;
+    margin:7px;
+}
+
+
+.dashboard-page-table-header div .nav-tabs .nav-link{
+background: #a3a3a3;
+border-radius: 10px;
+border:none;
+font-weight: 600;
+font-size: 15px;
+line-height: 22px;
+color: #000000;
+padding:10px 22px;
+margin-left:-10px;
+box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+}
+.nav-link.active{
+    background: #FFFFFF !important;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+ul.mb-3.nav.nav-tabs {
+    padding-left: 30px;
+}
+

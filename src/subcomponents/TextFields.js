@@ -17,7 +17,7 @@ function TextFields({ label, ...props }) {
             className={`${meta.touched && meta.error} inputfieldclass`} 
             autoComplete='off'
             {...field}{...props}
-            style={{height:"6rem" , width:'100%'}}
+            style={{height:"6rem" , width:'100%',padding: "15px"}}
             ></textarea>:
             <input 
             className={`${meta.touched && meta.error} inputfieldclass`} 

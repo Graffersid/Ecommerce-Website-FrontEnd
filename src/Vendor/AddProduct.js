@@ -12,23 +12,15 @@ import { RMIUploader } from "react-multiple-image-uploader"
 import * as Yup from 'yup'
 import TextFields from '../subcomponents/TextFields'
 import { Autocomplete, Box, Checkbox, FormControl, FormControlLabel, FormGroup, FormLabel, Input, Radio, RadioGroup, TextField } from '@mui/material'
+import '../CSS/AddProduct.css'
+import MultiImagePicker from './MultiImagePicker'
+import Newsletter from '../components/Newsletter'
+import Footer from '../components/Footer'
+
 function AddProduct() {
  
-    var dataSources = [
-        {
-          id: 1,
-          dataURL: "https://picsum.photos/seed/1/600",
-        },
-        {
-          id: 2,
-          dataURL: "https://picsum.photos/seed/2/600",
-        },
-        {
-          id: 3,
-          dataURL: "https://picsum.photos/seed/3/600",
-        }
-      ];
-   
+   const [dataSources, setdataSources] = useState([])
+     const [Rerender,setRerender] =useState(false)
     const [visible, setVisible] = useState(false);
     const handleSetVisible = () => {
       setVisible(true);
@@ -37,23 +29,23 @@ function AddProduct() {
       setVisible(false);
     };
     const onUpload = (data) => {
-        dataSources.push({
-            id:3,
-            dataURL:data.map(item => item.dataURL)
-        })
+        setdataSources([...dataSources,{
+            id:Math.floor(Math.random() * 100),
+            dataURL:data[data.length-1].dataURL
+        }])
       console.log(data, dataSources)  
     };
-    const onSelect = (data) => {
+    const onSelect =(data) => {
       console.log("Select files", data);
     };
     const onRemove = (id) => {
-       dataSources= dataSources.filter(idremove =>  idremove.id !== id)
+        setdataSources(dataSources.filter(idremove =>  idremove.id !== id))
         console.log(dataSources)
     };
  useEffect(()=>{
     console.log('vsbd')
  }
- ,[dataSources])
+ ,[Rerender])
  const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
  const validate= Yup.object({
     productname:Yup.string()
@@ -62,20 +54,21 @@ function AddProduct() {
     .required('Description is Required'),
     productprice:Yup.string()
      .required('Product Price is Required')
-     .matches(phoneRegExp, 'Product Price is not valid'),
-    productquantity:  Yup.string()
-    .required('Product Quantity is Required')
-    .matches(phoneRegExp, 'Product Quantity is not valid')
- 
+     .matches(/^[0-9]+$/, 'Product Price is not valid')
+
 
   }) 
-  const [selectedState, setSelectedState] =useState('') 
-  const[stateValidation, setStateValidation] =useState(false)
+  const[selectedCategory, setSelectedCategory] =useState('') 
+  const[selectedCheckBox, setselectedCheckBox] =useState('') 
+  const[CategoryValidation, setCategoryValidation] =useState(false)
+  const[selectedProduct, setselectedProduct] =useState('')
+
+  const[CheckBoxValidation, setCheckBoxValidation] =useState(false)
   const categories =[{name:"Men"}, {name:'Kids'}, {name:"Women"}]
   const handleSave=()=>{
     <>
-     {selectedState===''? setStateValidation(true) :null}
-
+     {selectedCategory===''? setCategoryValidation(true):null}
+     {selectedProduct===''?setCheckBoxValidation(true):null }
      </>
     }
     return (
@@ -113,7 +106,7 @@ function AddProduct() {
             </Nav>
 
             </Navbar.Collapse>
-</Navbar>
+          </Navbar>
          
          
          <div className='Dashboard-banner-image'  >  
@@ -130,23 +123,27 @@ function AddProduct() {
     <Container style={{display:'flex',flexWrap:'wrap' , marginTop:"5rem" , maxWidth:"85%"}}>
       
         <DashboardSidebar dashboard={true}/>
-      <div className="Dashboard-content-wrapper"> 
+          <div className="Dashboard-content-wrapper" style={{width:'78%'}}> 
 
      <h2 > Dashboard</h2>
 
      <div>    
-       <button onClick={handleSetVisible}> Show Me</button> 
+       {/* <button onClick={handleSetVisible}> Show Me</button>  */}
+       <label className="inputfield-label">Upload your product Image <sup style={{color:'red',fontSize:"19px",top:'0px'}}></sup></label>
     <RMIUploader
-        isOpen={visible}
+        isOpen={true}
         hideModal={hideModal}
         onSelect={onSelect}
         onUpload={onUpload}
         onRemove={onRemove}
         dataSources={dataSources}
+        className="multiple-product-image"
     /> 
-     {console.log(dataSources)}
-
-     <Formik  initialValues={{
+       {/* {console.log(dataSources)} */}
+       
+       
+   
+     <Formik initialValues={{
               productname:"",
               productprice:"",
               productquantity:'',
@@ -154,14 +151,11 @@ function AddProduct() {
             }}
             validationSchema={validate}
             onSubmit={(values)=>{
-       
             }}>
 
               {formik => (
                     <div className='login-form-wrapper-inner Register-wrapper' style={{width:"100%" , paddingLeft:'0rem'}}> 
                         <div style={{textAlign:'right'}}> 
-        
-                         
                          </div>
                          <Form> 
                          <div className='register-form-wrapper' style={{display:'block'}}>    
@@ -169,10 +163,10 @@ function AddProduct() {
                          <div style={{display:'block', width: '100%'}}> 
                            
                          <div style={{width:"100%", display:'flex', justifyContent:'space-between'}}>  
-                            <div style={{width:'100%',paddingRight:'1rem'}}> 
-                            <TextFields label="Product Name" name="productname" type="text" />
-                           </div>
-                           <div style={{width:'80%',marginRight:'1rem'}}>
+                             <div style={{width:'80%',marginRight:'1rem'}}>
+                             <TextFields label="Product Name" name="productname" type="text" />
+                             </div>
+                            <div style={{width:'80%',marginRight:'1rem'}}>
                             <TextFields label="Product Price" name="productprice" type="text" />
                             </div>
                           </div>  
@@ -182,41 +176,53 @@ function AddProduct() {
                             <TextFields placeholder="0" label="Product Quantity" name="productquantity" type="number" />
                             </div>
                             <div style={{width:'80%',marginRight:'1rem'}}>
+                           
                             <label className="inputfield-label">Product for <sup style={{color:'red',fontSize:"19px",top:'0px'}}>* </sup></label>
+                            <div>
                             <FormControl>
                             <RadioGroup
                                 aria-labelledby="demo-radio-buttons-group-label"
                                 defaultValue="female"
                                 name="radio-buttons-group"
-                                style={{flexDirection:'row'}}>
-                                <FormControlLabel value="men" control={<Radio />} label="Men" />
-                                <FormControlLabel value="women" control={<Radio />} label="Women" />
-                                <FormControlLabel value="kids" control={<Radio />} label="Kids" />
+                                style={{flexDirection:'row'}}
+                                onChange={(option,value)=>{
+                                    setselectedCheckBox(value)
+                                    if(value===null){
+                               
+                                        setCheckBoxValidation(true)
+                                      }
+                                      else{
+                            
+                                        setCheckBoxValidation(false)
+                                      }
+                                }}
+                                >
+                                <FormControlLabel value="men" control={<Radio style={{color:'black'}}/>} label="Men" style={{marginLeft:'33px',marginRight:'33px',color:'black',fontSize: "16px"}}/>
+                                <FormControlLabel value="women" control={<Radio style={{color:'black'}}/>} label="Women" style={{marginLeft:'33px',marginRight:'33px',color:'black',fontSize: "16px"}}/>
+                                <FormControlLabel value="kids" control={<Radio style={{color:'black'}}/>} label="Kids" style={{marginLeft:'33px',marginRight:'33px',color:'black',fontSize: "16px"}}/>
                             </RadioGroup>
                             </FormControl>
+                            {CheckBoxValidation ? <p className="validationerrormsg" style={{color:'red', fontSize:'13px'}}> Please Select One</p> :null}
                               </div> 
-                              
+                              </div>
                          </div>
-                         <TextFields label="Description" name="description" type="textarea" />  
-                         
-                         
                       
                          <div style={{width:"100%" , display:'flex'}}> 
-                            <div style={{width:'80%',marginRight:'1rem'}} className='login-form-input-wrapper'>
+                            <div style={{width:'100%',marginRight:'1rem'}} className='login-form-input-wrapper'>
                             <label className="inputfield-label">Category <sup style={{color:'red',fontSize:"19px",top:'0px'}}>* </sup></label>
-                            <Autocomplete
+                             <Autocomplete
                                   id="country-select-demo"
                                   sx={{ width: '100%' }}
                                   options={categories}
                                   autoHighlight
                                   getOptionLabel={(option) => option.name}
                                   onChange={(option,value)=>{
-                           
+                                    setSelectedCategory(value)
                                     if(value===null){
-                                      setStateValidation(true)
+                                        setCategoryValidation(true)
                                     }
                                     else{
-                                      setStateValidation(false)
+                                        setCategoryValidation(false)
                                     }
                                   }}
                                   renderOption={(props, option) => (
@@ -229,7 +235,7 @@ function AddProduct() {
                                     <TextField
                                    
                                       {...params}
-                                      label="Recieved"
+                                      label="Select Product Category"
                                       inputProps={{
                                         ...params.inputProps,
                                         autoComplete: 'new-password', // disable autocomplete and autofill
@@ -237,12 +243,14 @@ function AddProduct() {
 
                                 />
                                 
-                              {stateValidation ? <p className="validationerrormsg" style={{color:'red', fontSize:'13px'}}> Required</p> :null}
+                              {CategoryValidation ? <p className="validationerrormsg" style={{color:'red', fontSize:'13px'}}> Required</p> :null}
                                 </div>
                    
                    
                           </div>
-                        
+                          <div style={{width:'98%',marginRight:'1rem'}}>
+                          <TextFields label="Description" name="description" type="textarea" />  
+                          </div>
                          </div>   
                         
                          
@@ -251,7 +259,7 @@ function AddProduct() {
                      {/* {console.log(State.getStatesOfCountry("IN"))} */}
                         </div> 
                         <div style={{textAlign:"right",paddingRight: "1rem"}}>
-                         <button style={{background:"transparent", fontWeight:"700",border:'none', color:'black' , borderRadius:"6px"}} type="submit" onClick={handleSave}> Publish Product</button>
+                         <button style={{background:"transparent", fontWeight:"700",border:'none', color:'black' , borderRadius:"6px", fontSize:"17px"}} type="submit" onClick={handleSave}> Publish Product</button>
                          </div>
              
                          </Form>
@@ -264,9 +272,18 @@ function AddProduct() {
   </div>
 
   </div>
-
-        
+ 
         </Container>
+
+      {/* <MultiImagePicker/>   */}
+
+      {/* {dataSources?.map(data=> {
+        return (
+            <div><img src={data.dataURL}/> </div>
+        )
+       })}  */}
+        <Newsletter background={true}/>
+        <Footer/>
     </div>
   )
 }
