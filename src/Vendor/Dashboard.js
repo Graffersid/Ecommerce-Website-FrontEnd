@@ -14,7 +14,8 @@ import { Box } from '@mui/system'
 import { OrderData } from '../DataFiles/OrderData'
 import { Link } from 'react-router-dom'
 import {flashproducts} from '../DataFiles/ProductsDetials'
-
+import DeleteIcon from '@mui/icons-material/Delete';
+import EnhancedTable from '../subcomponents/Table'
 function Dashboard() {
   return (
     <div className="Dashboard-wrapper"> 
@@ -100,7 +101,7 @@ function Dashboard() {
        })}
     </div>
        <div className='dashboard-page-table-header'>  
-       <div style={{display:'flex' , width:'100%'}}> 
+       <div style={{display:'flex' , width:'90%' , marginTop: "1rem",marginBottom: "1rem" , marginRight:"auto", marginLeft:'auto'}}> 
                             <Autocomplete
                                   id="country-select-demo"
                                   sx={{ width: '100%' }}
@@ -163,44 +164,22 @@ function Dashboard() {
        </div>
          
          <div style={{width:'100%',margin:'10px',alignSelf: "center",alignItems: "center", padding: "10px",}}> 
-         <Tabs
-            defaultActiveKey="home"
-            transition={false}
-            id="noanim-tab-example"
-            className="mb-3"
-           >
+          <Tabs
+              defaultActiveKey="home"
+              transition={false}
+              id="noanim-tab-example"
+              className="mb-3"
+            >
             <Tab eventKey="home" title="In Stocks">
-            <div className='order-table-wrapper' style={{width:'100%'}}> 
-                   <table style={{width:'100%'}}> 
-                     <thead  style={{background:"#E0E0E0",borderRadius:'10px', textAlign:'center'}}>
-                      <tr>
-                      <th style={{padding:'13px'}}> # </th>
-                      <th style={{padding:'13px'}}> Product Name </th>
-                      <th style={{padding:'13px'}}> Quantity </th>
-                      <th style={{padding:'13px'}}> Price </th>
-                
-                      <th style={{padding:'13px'}}> Actions </th>
-                      </tr>
-                     </thead>
-                    <tbody>
-                   {flashproducts.map((data)=>{
-                   return (
-                    <tr style={{padding:'15px', textAlign:'center'}}> 
-                      <td style={{padding:'15px'}}>{data.productId}</td>
-                      <td style={{padding:'15px'}}>{data.producttitle}</td>
-                      <td style={{padding:'15px'}}>{data.Quantity}</td>
-                      <td style={{padding:'15px'}}>{data.productPrice} of 1 Items</td>
-                      <td  style={{padding:'15px'}}> <Link to={`/VendorOrders/${data.orderId}`} state={{name:data}}  className="action-btn-table" style={{textDecoration:"none"}}>Add</Link> <button> Delete</button></td>
-                     </tr>
-                   )})}  
-                     
-                    </tbody>
-                   </table>
+              <div className='order-table-wrapper' style={{width:'100%'}}>        
+                   <EnhancedTable/>
                </div>
-            </Tab>
-            <Tab eventKey="profile" title="Out Of Stocks">
-              fnddfndf
-            </Tab>
+              </Tab>
+               <Tab eventKey="profile" title="Out Of Stocks">
+               <div className='order-table-wrapper' style={{width:'100%'}}> 
+                  <EnhancedTable/>
+              </div>
+             </Tab>
           </Tabs>
           </div>
    

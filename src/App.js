@@ -11,6 +11,7 @@ import Order from './Vendor/Order';
 import AddStore from './Vendor/AddStore'
 import OrderDetails from './Vendor/OrderDetails';
 import AddProduct from './Vendor/AddProduct';
+import AccountDetails from './Vendor/AccountDetails';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="VendorOrders/:orderId" element={<OrderDetails/>}/> 
           <Route path="/DashboardAddStore" element={<AddStore/>} /> 
           <Route path="/VendorAddProduct" element={<AddProduct/>} /> 
+          <Route path="/VendorAccountDetails" element={<AccountDetails/>} /> 
     </Routes>
 
     </div>

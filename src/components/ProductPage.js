@@ -68,7 +68,7 @@ function ProductPage() {
     return (
     <>
     <Navbar expand="lg" className='navbar-wrapper' style={{position: "sticky"}}  fixed={'top'} >   
-
+           {console.log('itemval',itemval)}
             <Navbar.Brand href="/" className="navbar-link"> <img style={{width:'95px', height:"30px"}} src={MainLogo}/></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
