@@ -1,17 +1,15 @@
 import React, { Component } from 'react'
 import '../CSS/DropDown.css'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-export default class DropDown extends Component {
-  render() {
+export default function DropDown (props){
+
     return (
 <div class="dropdown">
-  <button class="dropbtn">Dropdown  <KeyboardArrowDownIcon/> </button>
+  <button class="dropbtn">{props.name}  <KeyboardArrowDownIcon/> </button>
   <div class="dropdown-content">
-    <a href="#">Link 1</a>
-    <a href="#">Link 2</a>
-    <a href="#">Link 3</a>
+ {props.children}
   </div>
 </div>
     )
-  }
+  
 }

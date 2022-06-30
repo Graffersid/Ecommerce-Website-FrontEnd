@@ -18,6 +18,7 @@ export const flashproducts=[
      productPrice:'$45.00',
      comparePrice:'$99.99',
      Quantity:1000,
+     ProductStatus:true
    
     },
     {
@@ -27,8 +28,8 @@ export const flashproducts=[
         productDescription:"Monochrome elegance. Made with a relaxed wide-leg, these trousers are made from a sustainable soft organic cotton with a mechanical stretch making the garment easily recycled.",
         productPrice:'$12.00',
         comparePrice:'$16.00',
-        Quantity:200
-,
+        Quantity:200,
+        ProductStatus:false
        },
        {
         productimg:ProductImage3,
@@ -39,6 +40,7 @@ export const flashproducts=[
         comparePrice:''
      ,
     Quantity:12  ,
+    ProductStatus:true
 },
        {
         productimg:ProductImage4,
@@ -47,8 +49,8 @@ export const flashproducts=[
         productDescription:"Men Black top sleeveless gown",
         productPrice:'$15.00',
         comparePrice:'$18.00',
-        Quantity:12
- ,
+        Quantity:12,
+        ProductStatus:false
       },
        {
         productimg:ProductImage5,
@@ -58,6 +60,7 @@ export const flashproducts=[
         productPrice:'$600.00',
         comparePrice:'',
          Quantity:129 ,
+         ProductStatus:true
          },
        {
         productimg:ProductImage6,
@@ -68,6 +71,7 @@ export const flashproducts=[
         comparePrice:''
      ,
     Quantity:90  ,
+    ProductStatus:false
 },
        {
         productimg:ProductImage7,
@@ -76,7 +80,8 @@ export const flashproducts=[
         productDescription:"This item is only exchangeable for the same or a different size, if available, and cannot be returned",
         productPrice:'$20.00',
         comparePrice:'$35.00',
-        Quantity:9
+        Quantity:9,
+        ProductStatus:true
   ,
      },
        {
@@ -86,7 +91,8 @@ export const flashproducts=[
         productDescription:"Knitted midi A-line dress, has a scoop neck, sleeveless, straight hem",
         productPrice:'$14.99',
         comparePrice:'$19.99',
-        Quantity:0
+        Quantity:0,
+        ProductStatus:false
   ,
      },
        {
@@ -96,7 +102,8 @@ export const flashproducts=[
         productDescription:"NIKE 2020 Black White is a clean and monochromatic colourway of the label’s latest high-technology silhouette. The model first launched late last year and is currently Jordan Brand’s flagship performance pair.",
         productPrice:'$50.00',
         comparePrice:'$80.00',
-        Quantity:123
+        Quantity:123,
+        ProductStatus:true
 ,
        },
        {
@@ -106,8 +113,10 @@ export const flashproducts=[
         productDescription:"Our optical engineers developed these sunglasses for hiking. Ideal for occasional use in the mountains.",
         productPrice:'$20.00',
         comparePrice:'$25.00',
-        Quantity:12
+        Quantity:12,
+        ProductStatus:false
  ,
+
       },
 
 ]

@@ -1,0 +1,61 @@
+.AdminDashboard-display{
+    background: black;
+    border-radius: 5px;
+    width: 100%;
+    margin:10px;
+    padding:6px 10px;
+}
+.AdminDashboard-display p:nth-child(1){
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #808080;
+    text-align: left;
+}
+.AdminDashboard-display p:nth-child(2){
+font-weight: 700;
+font-size: 16px;
+line-height: 22px;
+text-align: right;
+color: #FFFFFF;
+margin-bottom: 0px;
+}
+.check-btn{
+    background: black;
+    color:white;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    padding:6px 15px;
+    border-radius: 5px;
+}
+.unchecked-btn{
+    background: #767676;
+    color:white;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    padding:6px 15px;
+    border-radius: 5px;
+    border:none;
+}
+.table-bottom-btn button{
+    background: #C9C9C9;
+    border-radius: 10px;
+    border:none;
+    width:100%;
+    padding:10px 10px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+.VendorList-wrapper {
+background: #F5F5F5;
+border-radius: 10px;
+padding:13px;
+}
+.css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked+.MuiSwitch-track {
+    background-color: #026F00 !important;
+}
+.css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked {
+    color: #026F00 !important;
+}

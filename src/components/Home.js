@@ -10,8 +10,6 @@ import SearchBar from '../subcomponents/SearchBar';
 import Login from './Login';
 import BulkUpload from '../subcomponents/BulkUpload';
 import CloundinaryUpload from './CloundinaryUpload';
-import MainLogo from '../Images/Ecommerce-logo.jpg'
-
 
 import MenCollectionIMage from '../Images/Mens Collection img -1.webp'
 import sportscollectionImage from '../Images/sports-collestion img-2.webp'
@@ -32,12 +30,9 @@ import Footer from './Footer';
 import ImageWithText from '../Images/image-wtih-text-img1.webp'
 import AppstoreIMage from '../Images/App-store-image-1.png'
 import GooglestoreImage from '../Images/Google-Play-image-1.png'
-import Newsletter from './Newsletter';
-import AddtoCart from '../subcomponents/AddtoCart';
-import DropDown from '../subcomponents/DropDown';
-import ProductPage from './ProductPage';
-import { render } from '@testing-library/react';
+import Newsletter from './Newsletter'
 import {useNavigate, Link} from 'react-router-dom'
+import Header from './Header';
 
 function Home() {
   const options = {
@@ -54,52 +49,15 @@ const navigate = useNavigate()
   navigate(`products/${item.productId}`)
 
  }
- const handlelogoimage=()=>{
-  navigate('/')
- }
+
   return (
     <div>
 
   <ThemeProvider
   breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
     >
-        <Navbar expand="lg" className='navbar-wrapper' style={{position: "sticky"}}  fixed={'top'} >   
-
-      <Navbar.Brand className="navbar-link" onClick={handlelogoimage}> <img style={{width:'95px', height:"30px"}} src={MainLogo} /></Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="me-auto ">
-          <Nav.Link href="/" className="navbar-link">Home</Nav.Link>
-          <Nav.Link href="/login" className="navbar-link">Login</Nav.Link>
-          <Nav.Link href="#link" className="navbar-link">Sign Up</Nav.Link>
-          <Nav.Link href="" className="navbar-link"> <DropDown/> </Nav.Link>
-         
-          {/* <NavDropdown title="Dropdown" className="navbar-link" id="basic-nav-dropdown">
-            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-            <NavDropdown.Divider />
-            <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-          </NavDropdown> */}
-        </Nav>
-     <Nav>
-      <Nav.Link className="Navbar-link-two">
-    <SearchBar/>
-      </Nav.Link>
-      <Nav.Link className="Navbar-link-two" href="/login">
-      Sign Up
-      </Nav.Link>
-      <Nav.Link className="Navbar-link-two">
-       
-        <AddtoCart/>
-      </Nav.Link>
-     </Nav>
-
-      </Navbar.Collapse>
-
-
-  </Navbar>
-
+    
+ <Header/>
 <div style={{display:'flex',flexWrap:'wrap'}}> 
    
   <Card className="text-white-large">

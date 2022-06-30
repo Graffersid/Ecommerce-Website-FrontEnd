@@ -72,8 +72,9 @@ function Login() {
                             </div>   
                           <div className='login-btn-wrapper'> 
                         <button type="submit"> Login</button>
+                        <button onClick={()=>{navigate('/AdminDashBoard')}}> Login Admin</button>
                          <p style={{textAlign:'center'}}> or</p>
-                        {/* <button type="submit" className='login-btn'> <span style={{marginRight:'10px'}}><GoogleIcon/> </span>Login with Google</button> */}
+                         {/* <button type="submit" className='login-btn'> <span style={{marginRight:'10px'}}><GoogleIcon/> </span>Login with Google</button> */}
                                    
                                 <GoogleAPI clientId={clientId}
                                         onLoginSuccess={resSuccess=>{

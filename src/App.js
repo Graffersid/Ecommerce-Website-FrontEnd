@@ -12,6 +12,11 @@ import AddStore from './Vendor/AddStore'
 import OrderDetails from './Vendor/OrderDetails';
 import AddProduct from './Vendor/AddProduct';
 import AccountDetails from './Vendor/AccountDetails';
+import ChangePassword from './Vendor/ChangePassword';
+import AdminDashBoard from './Admin/AdminDashBoard'
+import AdminVendorList from './Admin/AdminVendorList'
+import AdminIndividualVendorList from './Admin/AdminIndividualVendorList';
+import IndividualStore from './Vendor/IndividualStore';
 
 function App() {
   return (
@@ -24,11 +29,17 @@ function App() {
           <Route path="/products" element={<Products/>}> </Route>
           <Route path="products/:productId" element={<ProductPage/>}/>  
           <Route path="/DashboardVendor" element={<Dashboard/>} /> 
+          <Route path="DashboardVendor/:StoreId" element={<IndividualStore/>} />  
           <Route path="/VendorOrders" element={<Order/>} ></Route> 
           <Route path="VendorOrders/:orderId" element={<OrderDetails/>}/> 
           <Route path="/DashboardAddStore" element={<AddStore/>} /> 
           <Route path="/VendorAddProduct" element={<AddProduct/>} /> 
+                 
           <Route path="/VendorAccountDetails" element={<AccountDetails/>} /> 
+          <Route path="/Vendorchangepassword" element={<ChangePassword/>} /> 
+          <Route path="/AdminDashBoard" element={<AdminDashBoard/>} /> 
+          <Route path="/AdminVendorList" element={<AdminVendorList/>} /> 
+          <Route path="AdminVendorList/:VendorId" element={<AdminIndividualVendorList/>} />  
     </Routes>
 
     </div>
