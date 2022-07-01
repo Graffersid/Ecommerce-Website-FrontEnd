@@ -17,7 +17,11 @@ import AdminDashBoard from './Admin/AdminDashBoard'
 import AdminVendorList from './Admin/AdminVendorList'
 import AdminIndividualVendorList from './Admin/AdminIndividualVendorList';
 import IndividualStore from './Vendor/IndividualStore';
-
+import AdminCustomerList from './Admin/AdminCustomerList'
+import AdminPromoCode from './Admin/AdminPromoCode';
+import PromoCodeList from './Admin/PromoCodeList';
+import AdminAccountDetails from './Admin/AdminAccountDetails';
+import AdminChangePassword from './Admin/AdminChangePassword';
 function App() {
   return (
     <div className="App">
@@ -40,6 +44,11 @@ function App() {
           <Route path="/AdminDashBoard" element={<AdminDashBoard/>} /> 
           <Route path="/AdminVendorList" element={<AdminVendorList/>} /> 
           <Route path="AdminVendorList/:VendorId" element={<AdminIndividualVendorList/>} />  
+          <Route path="/AdminCustomerList" element={<AdminCustomerList/>} />  
+          <Route path="/AdminPromoCode" element={<AdminPromoCode/>} /> 
+          <Route path="/AdminPromoCodeList" element={<PromoCodeList/>} /> 
+          <Route path="/AdminAccountDetails" element={<AdminAccountDetails/>} /> 
+          <Route path="/AdminChangePassword" element={<AdminChangePassword/>} /> 
     </Routes>
 
     </div>

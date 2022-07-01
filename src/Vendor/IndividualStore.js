@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Container, Nav, Navbar, Tab, Tabs } from 'react-bootstrap'
 import DashboardSidebar from './DashboardSideBar'
 import '../CSS/Dashboard.css'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import { Autocomplete, TextField } from '@mui/material'
+import { Autocomplete, Switch, TextField } from '@mui/material'
 import { Box } from '@mui/system'
 import { DashboardData } from '../DataFiles/DashboardData'
 import EnhancedTable from '../subcomponents/Table'
@@ -15,7 +15,7 @@ import IndividualStoreTable from '../subcomponents/IndividualStoreTable.js';
 function IndividualStore() {
     
    const StoreData= useLocation()
-  
+   const [check, setcheck] =useState(true)
   return (
       <div className="Dashboard-wrapper"> 
          <Header/>
@@ -38,8 +38,8 @@ function IndividualStore() {
         <div className="Dashboard-content-wrapper" style={{width:'75%'}}> 
            
              
-            <h2> {StoreData.state.name.storename} </h2>
-          
+            <h2 style={{marginBottom:'5px'}}> {StoreData.state.name.storename} </h2>
+            <p style={{margin:"0px" , fontSize:'15px', marginLeft:'2px'}}> Location:{StoreData.state.name.locationcity}</p>
             <div style={{textAlign:'right'}}>
             <button className='addproduct-btn'> Add Product</button>
             </div>
@@ -47,8 +47,8 @@ function IndividualStore() {
           <div className='dashboard-lowerpart-wrapper'> 
         
          <div className='dashboard-page-table-header'>  
-         <div style={{display:'flex' , width:'60%' , marginTop: "1rem",marginBottom: "1rem" }}> 
-                    
+         <div style={{alignItems:'center',display:'flex' , width:'100%' , marginTop: "1rem",marginBottom: "1rem" , justifyContent:"space-between"}}> 
+                     <div style={{width:'50%'}}> 
                              <Autocomplete
                                     id="country-select-demo"
                                     sx={{ width: '100%' }}
@@ -78,8 +78,18 @@ function IndividualStore() {
                                         
                                         /> )}
   
-                                  />          
-  
+                                  /> 
+                                  
+                      </div>  
+              <div style={{width:'50%' , textAlign:'right'}}>
+                  {StoreData.state.active?    
+                  <>  <span style={{fontWeight: "400",fontSize: "14px",lineHeight: "19px", color: "#959595"}}> Active</span>   <Switch
+                            checked={check}
+                            onChange={()=> {setcheck(!check)}}
+                            inputProps={{ 'aria-label': 'controlled' }}
+                          /></>  :null}
+                                              
+             </div>
          </div>
            
            <div style={{width:'100%',margin:'10px',alignSelf: "center",alignItems: "center", padding: "10px",marginBottom:'3rem'}}> 

@@ -30,13 +30,16 @@ const DashboardSidebar = (props) => {
             <NavLink exact to="/AdminVendorList" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="table"  style={{color:'black'}} className={props.adminvendorlist? `active-link-sidebar`:null}>Vendor</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/DashboardAddStore" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="user"  style={{color:'black'}} className={props.addstore? `active-link-sidebar`:null}>Add Store</CDBSidebarMenuItem>
+            <NavLink exact to="/AdminCustomerList" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="user"  style={{color:'black'}} className={props.admincustomerlist? `active-link-sidebar`:null}>Customers</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/VendorAccountDetails" activeClassName="activeClicked" >
+            <NavLink exact to="/AdminPromoCode" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="user"  style={{color:'black'}} className={props.promocode? `active-link-sidebar`:null}>Promo Code</CDBSidebarMenuItem>
+            </NavLink>
+            <NavLink exact to="/AdminAccountDetails" activeClassName="activeClicked" >
               <CDBSidebarMenuItem icon="user"  style={{color:'black'}} className={props.accountdetails? `active-link-sidebar`:null}>Account Detials</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/Vendorchangepassword" activeClassName="activeClicked">
+            <NavLink exact to="/AdminChangePassword" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="chart-line"  style={{color:'black'}} className={props.changepassword? `active-link-sidebar`:null}>Change Password</CDBSidebarMenuItem>
             </NavLink>
 

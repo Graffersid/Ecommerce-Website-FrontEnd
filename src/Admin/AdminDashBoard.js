@@ -165,7 +165,7 @@ function AdminDashBoard() {
                    <div className='table-bottom-btn'>
                    <button onClick={()=>{
                     navigate('/AdminVendorList')
-                   }}> See All</button>
+                   }}> See all</button>
                    </div>
                  </div>
 
@@ -241,7 +241,9 @@ function AdminDashBoard() {
                     </tbody>
                    </table>
                    <div className='table-bottom-btn'>
-                   <button> See All</button>
+                   <button  onClick={()=>{
+                    navigate('/AdminCustomerList')
+                   }}> See all</button>
                    </div>
                  </div>
 

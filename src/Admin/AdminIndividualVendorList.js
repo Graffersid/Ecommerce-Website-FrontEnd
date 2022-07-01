@@ -10,12 +10,12 @@ import EnhancedTable from '../subcomponents/Table'
 import Newsletter from '../components/Newsletter'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import AdminVendorIndividualTable from '../subcomponents/AdminVendorIndividualTable';
 function AdminIndividualVendorList() {
     
    const vendorData= useLocation()
-  
+   const navigate = useNavigate()
   return (
       <div className="Dashboard-wrapper"> 
          <Header/>
@@ -42,7 +42,7 @@ function AdminIndividualVendorList() {
           <div style={{display:'flex', flexWrap:'wrap'}}> 
          {DashboardData.map(storeData =>{
           return (
-            <div className='dashboard-storebox-wrapper'> 
+            <div style={{cursor:'pointer'}} className='dashboard-storebox-wrapper' onClick={()=>{navigate(`/DashboardVendor/${storeData.StoreId}`, {state:{name:storeData, active:true}})}}> 
                <img src={storeData.storeimg}/>
                   <div>
                         <h3> {storeData.storename}</h3>

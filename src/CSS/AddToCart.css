@@ -1,0 +1,58 @@
+.quantity-input__modifier, .quantity-input__screen {
+    padding: 5px 9px !important;
+    width: 2.7rem !important;
+    font-size: 1rem !important;
+    background: black !important;
+    color: #fff !important;
+    border: none !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+}
+.quantity-input{
+border-radius: 10px;
+}
+
+.proceedtocheckout h4{
+    font-size: 1rem;
+    line-height: 1.5rem;
+    --tw-text-opacity: 1;
+    color: rgba(255,255,255,var(--tw-text-opacity));
+   margin-bottom:0px;
+   font-family: 'Open Sans',sans-serif;
+   letter-spacing: 1px;
+}
+.quantitySelector-Wrapper p{
+font-size: 1rem;
+line-height: 1.5rem;
+font-weight: 600;
+--tw-text-opacity: 1;
+color: rgba(33,33,33,var(--tw-text-opacity)) !important;
+margin-bottom:0px;
+}
+.text-part-wrapper h6{
+font-size: .875rem;
+line-height: 1.25rem;
+--tw-text-opacity: 1;
+color: rgba(33,33,33,var(--tw-text-opacity));
+margin-bottom:5px;
+}
+.text-part-wrapper p{
+--tw-text-opacity: 1;
+color: rgba(153,153,153,var(--tw-text-opacity));
+font-size: .875rem;
+line-height: 1.25rem;
+}
+
+button.quantity-input__modifier.quantity-input__modifier--left {
+    border-radius: 5px 0px 0px 5px !important;
+}
+button.quantity-input__modifier.quantity-input__modifier--right{
+    border-radius: 0px 5px 5px 0px !important;
+}
+.offcanvas-backdrop.show {
+    opacity: .3 !important;
+    z-index:9999 !important;
+}
+.offcanvas.offcanvas-end.show {
+    z-index: 9999999999999;
+}
